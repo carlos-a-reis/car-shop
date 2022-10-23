@@ -14,19 +14,18 @@ describe('Car Controller', () => {
   const req = {} as Request;
   const res = {} as Response;
 
-  before(() => {
-    sinon.stub(carService, 'create').resolves(carMockWithId);
-
+  beforeEach(() => {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
   });
 
-  after(() => {
+  afterEach(() => {
     sinon.restore();
   });
 
   describe('Creating a car', () => {
     it('successfully created', async () => {
+      sinon.stub(carService, 'create').resolves(carMockWithId);
       req.body = carMock;
       await carController.create(req, res);
 
