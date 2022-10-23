@@ -23,7 +23,7 @@ describe('Car Controller', () => {
     sinon.restore();
   });
 
-  describe('Creating a car', () => {
+  describe('creating a car', () => {
     it('successfully created', async () => {
       sinon.stub(carService, 'create').resolves(carMockWithId);
       req.body = carMock;
@@ -31,6 +31,16 @@ describe('Car Controller', () => {
 
       expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
       expect((res.json as sinon.SinonStub).calledWith(carMockWithId)).to.be.true;
+    });
+  });
+
+  describe('searching all cars', () => {
+    it('successfully searched', async () => {
+      sinon.stub(carService, 'read').resolves([carMockWithId]);
+      await carController.read(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith([carMockWithId])).to.be.true;
     });
   });
 });

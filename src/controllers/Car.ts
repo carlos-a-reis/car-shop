@@ -20,6 +20,15 @@ class CarController {
 
     res.status(201).json(carCreated);
   }
+
+  public async read(
+    _req: Request,
+    res: Response,
+  ) {
+    const carsFound = await this._service.read();
+
+    res.status(200).json(carsFound);
+  }
 }
 
 export default CarController;
