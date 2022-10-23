@@ -15,7 +15,7 @@ class CarController {
   ) {
     const { model, year, color, status, buyValue, doorsQty, seatsQty } = req.body;
     const car = { model, year, color, status, buyValue, doorsQty, seatsQty };
-
+    
     const carCreated = await this._service.create(car);
 
     res.status(201).json(carCreated);
@@ -38,6 +38,20 @@ class CarController {
     const carFound = await this._service.readOne(id);
 
     res.status(200).json(carFound);
+  }
+
+  public async update(
+    req: Request,
+    res: Response,
+  ) {
+    const { id } = req.params;
+    const { model, year, color, status, buyValue, doorsQty, seatsQty } = req.body;
+    const car = { model, year, color, status, buyValue, doorsQty, seatsQty };
+
+    const carUpdated = await this._service.update(id, car);
+    console.log(carUpdated);
+    
+    res.status(200).json(carUpdated);
   }
 }
 
