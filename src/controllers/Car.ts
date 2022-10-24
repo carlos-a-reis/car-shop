@@ -49,7 +49,6 @@ class CarController {
     const car = { model, year, color, status, buyValue, doorsQty, seatsQty };
 
     const carUpdated = await this._service.update(id, car);
-    console.log(carUpdated);
     
     res.status(200).json(carUpdated);
   }
