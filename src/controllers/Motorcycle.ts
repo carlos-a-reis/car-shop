@@ -25,9 +25,9 @@ class MotorcycleController {
     _req: Request,
     res: Response,
   ) {
-    const carsFound = await this._service.read();
+    const motorcyclesCreatedFound = await this._service.read();
 
-    res.status(200).json(carsFound);
+    res.status(200).json(motorcyclesCreatedFound);
   }
 
   public async readOne(
@@ -35,9 +35,9 @@ class MotorcycleController {
     res: Response,
   ) {
     const { id } = req.params;
-    const carFound = await this._service.readOne(id);
+    const motorcycleFound = await this._service.readOne(id);
 
-    res.status(200).json(carFound);
+    res.status(200).json(motorcycleFound);
   }
 
   public async update(
@@ -45,13 +45,12 @@ class MotorcycleController {
     res: Response,
   ) {
     const { id } = req.params;
-    const { model, year, color, status, buyValue, doorsQty, seatsQty } = req.body;
-    const car = { model, year, color, status, buyValue, doorsQty, seatsQty };
+    const { model, year, color, status, buyValue, category, engineCapacity } = req.body;
+    const motorcycle = { model, year, color, status, buyValue, category, engineCapacity };
 
-    const carUpdated = await this._service.update(id, car);
-    console.log(carUpdated);
+    const motorcycleUpdated = await this._service.update(id, motorcycle);
     
-    res.status(200).json(carUpdated);
+    res.status(200).json(motorcycleUpdated);
   }
 
   public async delete(
