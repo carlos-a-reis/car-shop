@@ -72,7 +72,7 @@ describe('Car Service', () => {
       }
 
       expect(error).to.be.not.undefined;
-      expect(error.message).to.be.equal('EntityNotFound');
+      expect(error.message).to.be.equal(ErrorTypes.EntityNotFound);
     });
   });
 
@@ -92,7 +92,7 @@ describe('Car Service', () => {
       }
 
       expect(error).to.be.not.undefined;
-      expect(error.message).to.be.equal('EntityNotFound');
+      expect(error.message).to.be.equal(ErrorTypes.EntityNotFound);
     });
   });
 
@@ -112,7 +112,7 @@ describe('Car Service', () => {
       }
 
       expect(error).to.be.not.undefined;
-      expect(error.message).to.be.equal('EntityNotFound');
+      expect(error.message).to.be.equal(ErrorTypes.EntityNotFound);
     });
   });
 });

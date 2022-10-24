@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { ErrorTypes } from '../../../errors/catalog';
 import CarModel from '../../../models/Car';
 import { Model } from 'mongoose';
 import { carMock, carMockWithId } from '../../mocks/carMock';
@@ -51,7 +52,7 @@ describe('Car Model', () => {
       }
 
       expect(error).to.be.not.undefined;
-      expect(error.message).to.be.equal('InvalidMongoId');
+      expect(error.message).to.be.equal(ErrorTypes.InvalidMongoId);
     });
   });
 
@@ -71,7 +72,7 @@ describe('Car Model', () => {
       }
 
       expect(error).to.be.not.undefined;
-      expect(error.message).to.be.equal('InvalidMongoId');
+      expect(error.message).to.be.equal(ErrorTypes.InvalidMongoId);
     });
   });
 
@@ -91,7 +92,7 @@ describe('Car Model', () => {
       }
 
       expect(error).to.be.not.undefined;
-      expect(error.message).to.be.equal('InvalidMongoId');
+      expect(error.message).to.be.equal(ErrorTypes.InvalidMongoId);
     });
   });
 });
